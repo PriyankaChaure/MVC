@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Assignment_on_codefirst.Models.emp1>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    @*<script type="text/javascript">
+        $(function () {
+            $("#opt").click(function () {
+                var v1 = parseInt($("#sal").val());
+               
+                var opt = $("#opt").val();
+                var r;
+                switch (opt) {
+                    case "+": r = v1 + v2; break;
+                    case "-": r = v1 - v2; break;
+                    case "*": r = v1 * v2; break;
+                    case "/": r = v1 / v2; break;
+                    default: ("Invalid operator"); break;
+
+                }
+                $("#res").val(r);
+            });
+
+        });
+    </script>*@
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table" border="1">
+        <tr>
+            <td colspan="7">
+                @using (Html.BeginForm("searchbydept", "Test", FormMethod.Post))
+                {
+                    @:dept Name:
+                    @Html.DropDownList("deptid", "Select dept")
+
+                    @:Select Operator :
+                    @Html.DropDownList("opt", new MultiSelectList(new[] { "SelectOperator", ">", "<", ">=", "<=", "==" }))
+
+
+                    @:Salary:
+                    <input type="text" name="salary" />
+                    <input type="submit" value="Search" />
+                }
+            </td>
+            
+            </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.city1s.cityname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dept1s.deptName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mobileno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.salary)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.city1s.cityname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dept1s.deptName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.empname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mobileno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salary)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.empid }) |
+                @Html.ActionLink("Details", "Details", new { id=item.empid }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.empid })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

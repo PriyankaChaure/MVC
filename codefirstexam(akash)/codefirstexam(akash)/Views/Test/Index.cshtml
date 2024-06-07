@@ -1,0 +1,65 @@
+﻿@model IEnumerable<codefirstexam_akash_.Models.batch>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.course.coursename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.trainer.trainername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.batchtitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.startdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.noofstudent)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.course.coursename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trainer.trainername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.batchtitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.noofstudent)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.batchid }) |
+                @Html.ActionLink("Details", "Details", new { id=item.batchid }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.batchid })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    
+        <table border="1" style="width:40%;height:60%;">
+            <tr style="background-color:yellow;color:blue;">
+              <td>
+                <table>
+                    <tr >
+                        <td style="background-color:black;">
+                            <img style="width:150px;height:100px;" src="~/Content/priyaimage.jfif"/>
+                        </td>
+                        <td>
+                            <h1>Priyanka</h1>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td style="background-color:lightgreen;color:white">
+                            <table style="background-color:lightgreen;color:white">
+                                <tr>
+                                    <td>
+                                        <a href="/Test/Home1">Home
+                                        </a>
+                                    <td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/Test/Blog">
+                                            Blog
+                                        </a>
+<td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/Test/SignIn">
+                                            Sign In
+                                        </a>
+<td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/Test/SignUp">
+                                            Sign Up
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td style="background-color:palevioletred;color:white;width:230px; height:200px;">
+                            @RenderBody()
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:saddlebrown;color:white;">
+                            &copy;All Right reserved To Priyanka
+                        </td>
+                        <td style="background-color:black;">
+                            <img style="width:100px;height:100px;" src="~/Content/priyaimage.jfif" />
+                        </td>
+                    </tr>
+                </table>
+              </td>
+            </tr>
+        </table>
+       
+    
+</body>
+</html>

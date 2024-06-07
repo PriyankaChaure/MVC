@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "validationUsingAnnotation_Ex", "validationUsingAnnotation_Ex.csproj", "{2410D066-71F2-405B-8DDD-5F69F36C3462}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2410D066-71F2-405B-8DDD-5F69F36C3462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2410D066-71F2-405B-8DDD-5F69F36C3462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2410D066-71F2-405B-8DDD-5F69F36C3462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2410D066-71F2-405B-8DDD-5F69F36C3462}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92631AE1-20D7-4BB7-AF3E-1EAB9E192967}
+	EndGlobalSection
+EndGlobal

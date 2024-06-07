@@ -1,0 +1,62 @@
+﻿@model CURD_createEx.Models.emptbl
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>edit</title>
+</head>
+<body>
+    <div> <h2>Emp Edit</h2>
+          <div>
+              @using (Html.BeginForm())
+              {
+                  @Html.HiddenFor(p=>p.empid)
+                  <div>
+                      @Html.LabelFor(p => p.empname)
+                      <div>
+                          @Html.EditorFor(p => p.empname)
+                      </div>
+                  </div>
+                  <div>
+                      @Html.LabelFor(p => p.address)
+                      <div>
+                          @Html.EditorFor(p => p.address)
+                      </div>
+                  </div>
+                  <div>
+                      @Html.LabelFor(p => p.emailid)
+                      <div>
+                          @Html.EditorFor(p => p.emailid)
+                      </div>
+                  </div>
+                  <div>
+                      @Html.LabelFor(p => p.mono)
+                      <div>
+                          @Html.EditorFor(p => p.mono)
+                      </div>
+                  </div>
+                  <div>
+                      @Html.LabelFor(p => p.salary)
+                      <div>
+                          @Html.EditorFor(p => p.salary)
+                      </div>
+                  </div>
+                  <div>
+                      @Html.LabelFor(p => p.depttbl.deptname)
+                      <div>
+                          @Html.DropDownList("dept", "deptname")
+                      </div>
+                  </div>
+                  <div>
+                      <input type="submit" value="update" />
+                  </div>
+              }
+          </div>
+    </div>
+</body>
+</html>

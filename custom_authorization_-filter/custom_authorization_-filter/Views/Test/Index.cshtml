@@ -1,0 +1,55 @@
+﻿@model IEnumerable<custom_authorization__filter.Models.product>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>Welcome! @Session["firstname"]</h2>
+    <p>@Html.ActionLink("LogOut", "LogOut", "ManageUsers")</p>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.productname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mfgname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mfgname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.productid }) |
+                @Html.ActionLink("Details", "Details", new { id=item.productid }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.productid })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

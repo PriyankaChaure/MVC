@@ -1,0 +1,26 @@
+﻿@model IEnumerable<bookex.Models.book>
+@{
+    ViewBag.Title = "showmultibooks";
+}
+
+
+<div>
+    <h2>show multiple books list</h2>
+    <table border="1">
+        <tr>
+            <td>Book Id</td>
+            <td>Book Name</td>
+            <td>Author Name</td>
+            <td>Book Price</td>
+        </tr>
+        @foreach(var temp in Model)
+            {
+                <tr>
+                    <td>@temp.bookid</td>
+                    <td>@temp.bookname</td>
+                    <td>@temp.authorname</td>
+                    <td>@temp.bookprice</td>
+                </tr>
+            }
+    </table>
+</div>

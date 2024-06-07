@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="prachiModelStoreContainer" CdmEntityContainer="prachiEntities">
+    <EntitySetMapping Name="BillTbls">
+      <EntityTypeMapping TypeName="prachiModel.BillTbl">
+        <MappingFragment StoreEntitySet="BillTbl">
+          <ScalarProperty Name="billid" ColumnName="billid" />
+          <ScalarProperty Name="billdate" ColumnName="billdate" />
+          <ScalarProperty Name="billamount" ColumnName="billamount" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customertbls">
+      <EntityTypeMapping TypeName="prachiModel.customertbl">
+        <MappingFragment StoreEntitySet="customertbl">
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="customername" ColumnName="customername" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paymenttbls">
+      <EntityTypeMapping TypeName="prachiModel.paymenttbl">
+        <MappingFragment StoreEntitySet="paymenttbl">
+          <ScalarProperty Name="paymentid" ColumnName="paymentid" />
+          <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+          <ScalarProperty Name="paymenetamount" ColumnName="paymenetamount" />
+          <ScalarProperty Name="billid" ColumnName="billid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="atables">
+      <EntityTypeMapping TypeName="prachiModel.atable">
+        <MappingFragment StoreEntitySet="atable">
+          <ScalarProperty Name="avalue" ColumnName="avalue" />
+          <ScalarProperty Name="aid" ColumnName="aid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="btables">
+      <EntityTypeMapping TypeName="prachiModel.btable">
+        <MappingFragment StoreEntitySet="btable">
+          <ScalarProperty Name="aid" ColumnName="aid" />
+          <ScalarProperty Name="bvalue" ColumnName="bvalue" />
+          <ScalarProperty Name="bid" ColumnName="bid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

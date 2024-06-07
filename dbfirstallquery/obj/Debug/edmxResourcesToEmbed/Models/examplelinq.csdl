@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="prachiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BillTbl">
+    <Key>
+      <PropertyRef Name="billid" />
+    </Key>
+    <Property Name="billid" Type="Int64" Nullable="false" />
+    <Property Name="billdate" Type="DateTime" Precision="3" />
+    <Property Name="billamount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="customerid" Type="Int64" />
+    <NavigationProperty Name="customertbl" Relationship="Self.FK__BillTbl__custome__36B12243" FromRole="BillTbl" ToRole="customertbl" />
+    <NavigationProperty Name="paymenttbls" Relationship="Self.FK__paymenttb__billi__5CD6CB2B" FromRole="BillTbl" ToRole="paymenttbl" />
+  </EntityType>
+  <EntityType Name="customertbl">
+    <Key>
+      <PropertyRef Name="customerid" />
+    </Key>
+    <Property Name="customerid" Type="Int64" Nullable="false" />
+    <Property Name="customername" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="emailid" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="mobileno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BillTbls" Relationship="Self.FK__BillTbl__custome__36B12243" FromRole="customertbl" ToRole="BillTbl" />
+  </EntityType>
+  <EntityType Name="paymenttbl">
+    <Key>
+      <PropertyRef Name="paymentid" />
+    </Key>
+    <Property Name="paymentid" Type="Int64" Nullable="false" />
+    <Property Name="paymentdate" Type="DateTime" Precision="3" />
+    <Property Name="paymenetamount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="billid" Type="Int64" />
+    <NavigationProperty Name="BillTbl" Relationship="Self.FK__paymenttb__billi__5CD6CB2B" FromRole="paymenttbl" ToRole="BillTbl" />
+  </EntityType>
+  <Association Name="FK__BillTbl__custome__36B12243">
+    <End Role="customertbl" Type="Self.customertbl" Multiplicity="0..1" />
+    <End Role="BillTbl" Type="Self.BillTbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customertbl">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="BillTbl">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__paymenttb__billi__5CD6CB2B">
+    <End Role="BillTbl" Type="Self.BillTbl" Multiplicity="0..1" />
+    <End Role="paymenttbl" Type="Self.paymenttbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BillTbl">
+        <PropertyRef Name="billid" />
+      </Principal>
+      <Dependent Role="paymenttbl">
+        <PropertyRef Name="billid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="prachiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BillTbls" EntityType="Self.BillTbl" />
+    <EntitySet Name="customertbls" EntityType="Self.customertbl" />
+    <EntitySet Name="paymenttbls" EntityType="Self.paymenttbl" />
+    <AssociationSet Name="FK__BillTbl__custome__36B12243" Association="Self.FK__BillTbl__custome__36B12243">
+      <End Role="customertbl" EntitySet="customertbls" />
+      <End Role="BillTbl" EntitySet="BillTbls" />
+    </AssociationSet>
+    <AssociationSet Name="FK__paymenttb__billi__5CD6CB2B" Association="Self.FK__paymenttb__billi__5CD6CB2B">
+      <End Role="BillTbl" EntitySet="BillTbls" />
+      <End Role="paymenttbl" EntitySet="paymenttbls" />
+    </AssociationSet>
+    <EntitySet Name="atables" EntityType="prachiModel.atable" />
+    <EntitySet Name="btables" EntityType="prachiModel.btable" />
+  </EntityContainer>
+  <EntityType Name="atable">
+    <Key>
+      <PropertyRef Name="aid" />
+    </Key>
+    <Property Name="aid" Type="Int64" Nullable="false" />
+    <Property Name="avalue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="btable">
+    <Key>
+      <PropertyRef Name="bid" />
+    </Key>
+    <Property Name="bid" Type="Int64" Nullable="false" />
+    <Property Name="bvalue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="aid" Type="Int64" />
+  </EntityType>
+</Schema>

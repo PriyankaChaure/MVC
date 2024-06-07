@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="chaureModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="project">
+          <Key>
+            <PropertyRef Name="projectid" />
+          </Key>
+          <Property Name="projectid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="projectname" Type="varchar" MaxLength="20" />
+          <Property Name="projectdesc" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="projectassignment">
+          <Key>
+            <PropertyRef Name="assignmentid" />
+          </Key>
+          <Property Name="assignmentid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentid" Type="bigint" />
+          <Property Name="assignmentdate" Type="datetime" />
+          <Property Name="projectid" Type="bigint" />
+        </EntityType>
+        <Association Name="FK__projectas__proje__1DE57479">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="projectassignment" Type="Self.projectassignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="projectid" />
+            </Principal>
+            <Dependent Role="projectassignment">
+              <PropertyRef Name="projectid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="chaureModelStoreContainer">
+          <EntitySet Name="project" EntityType="Self.project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="projectassignment" EntityType="Self.projectassignment" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__projectas__proje__1DE57479" Association="Self.FK__projectas__proje__1DE57479">
+            <End Role="project" EntitySet="project" />
+            <End Role="projectassignment" EntitySet="projectassignment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="chaureModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="project">
+          <Key>
+            <PropertyRef Name="projectid" />
+          </Key>
+          <Property Name="projectid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="projectname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="projectdesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="projectassignments" Relationship="Self.FK__projectas__proje__1DE57479" FromRole="project" ToRole="projectassignment" />
+        </EntityType>
+        <EntityType Name="projectassignment">
+          <Key>
+            <PropertyRef Name="assignmentid" />
+          </Key>
+          <Property Name="assignmentid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentid" Type="Int64" />
+          <Property Name="assignmentdate" Type="DateTime" Precision="3" />
+          <Property Name="projectid" Type="Int64" />
+          <NavigationProperty Name="project" Relationship="Self.FK__projectas__proje__1DE57479" FromRole="projectassignment" ToRole="project" />
+        </EntityType>
+        <Association Name="FK__projectas__proje__1DE57479">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="projectassignment" Type="Self.projectassignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="projectid" />
+            </Principal>
+            <Dependent Role="projectassignment">
+              <PropertyRef Name="projectid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="chaureEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="projects" EntityType="Self.project" />
+          <EntitySet Name="projectassignments" EntityType="Self.projectassignment" />
+          <AssociationSet Name="FK__projectas__proje__1DE57479" Association="Self.FK__projectas__proje__1DE57479">
+            <End Role="project" EntitySet="projects" />
+            <End Role="projectassignment" EntitySet="projectassignments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="chaureModelStoreContainer" CdmEntityContainer="chaureEntities">
+          <EntitySetMapping Name="projects">
+            <EntityTypeMapping TypeName="chaureModel.project">
+              <MappingFragment StoreEntitySet="project">
+                <ScalarProperty Name="projectid" ColumnName="projectid" />
+                <ScalarProperty Name="projectname" ColumnName="projectname" />
+                <ScalarProperty Name="projectdesc" ColumnName="projectdesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projectassignments">
+            <EntityTypeMapping TypeName="chaureModel.projectassignment">
+              <MappingFragment StoreEntitySet="projectassignment">
+                <ScalarProperty Name="assignmentid" ColumnName="assignmentid" />
+                <ScalarProperty Name="studentid" ColumnName="studentid" />
+                <ScalarProperty Name="assignmentdate" ColumnName="assignmentdate" />
+                <ScalarProperty Name="projectid" ColumnName="projectid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

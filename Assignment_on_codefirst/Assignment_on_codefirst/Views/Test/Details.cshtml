@@ -1,0 +1,74 @@
+﻿@model Assignment_on_codefirst.Models.emp1
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>emp1</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.city1s.cityname)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.city1s.cityname)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.dept1s.deptName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.dept1s.deptName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.empname)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.empname)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.address)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.address)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.mobileno)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.mobileno)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.salary)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.salary)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.empid }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

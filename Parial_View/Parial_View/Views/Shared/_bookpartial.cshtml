@@ -1,0 +1,30 @@
+﻿@model Parial_View.Models.book
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(p => p.bookid)
+            </td>
+            <td>
+                @Html.EditorFor(p => p.bookid)
+            </td>
+            <td>
+                @Html.LabelFor(p => p.title)
+            </td>
+            <td>
+                @Html.EditorFor(p => p.title)
+            </td>
+            <td>
+                @Html.LabelFor(p => p.author)
+            </td>
+            <td>
+                @Html.EditorFor(p => p.author)
+            </td>
+            <td>
+                @Html.LabelFor(p => p.description)
+            </td>
+            <td>
+                @Html.EditorFor(p => p.description)
+            </td>
+        </tr>
+    </table>
+

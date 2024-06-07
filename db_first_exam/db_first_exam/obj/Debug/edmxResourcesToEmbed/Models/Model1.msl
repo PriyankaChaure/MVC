@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="prachiModelStoreContainer" CdmEntityContainer="prachiEntities">
+    <EntitySetMapping Name="projects">
+      <EntityTypeMapping TypeName="prachiModel.project">
+        <MappingFragment StoreEntitySet="project">
+          <ScalarProperty Name="projectid" ColumnName="projectid" />
+          <ScalarProperty Name="projectname" ColumnName="projectname" />
+          <ScalarProperty Name="projectdesc" ColumnName="projectdesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectassignments">
+      <EntityTypeMapping TypeName="prachiModel.projectassignment">
+        <MappingFragment StoreEntitySet="projectassignment">
+          <ScalarProperty Name="assignmentid" ColumnName="assignmentid" />
+          <ScalarProperty Name="studentid" ColumnName="studentid" />
+          <ScalarProperty Name="assignmentdate" ColumnName="assignmentdate" />
+          <ScalarProperty Name="projectid" ColumnName="projectid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="prachiModel.student">
+        <MappingFragment StoreEntitySet="student">
+          <ScalarProperty Name="studentid" ColumnName="studentid" />
+          <ScalarProperty Name="studentname" ColumnName="studentname" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="phoneno" ColumnName="phoneno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

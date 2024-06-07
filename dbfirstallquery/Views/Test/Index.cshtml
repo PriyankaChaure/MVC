@@ -1,0 +1,43 @@
+﻿@model IEnumerable<dbfirstallquery.Models.custbillVM>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <h2>customer information</h2>
+        <table border="1">
+            <tr>
+                <td>@Html.DisplayNameFor(p => p.customerid)</td>
+                <td>@Html.DisplayNameFor(p => p.customername)</td>
+                <td>@Html.DisplayNameFor(p => p.billid)</td>
+                <td>@Html.DisplayNameFor(p => p.billdate)</td>
+
+                <td>@Html.DisplayNameFor(p => p.billamount)</td>
+                <td>@Html.DisplayNameFor(p => p.paymentdate)</td>
+                <td>@Html.DisplayNameFor(p => p.paymenetamount)</td>
+            </tr>
+            @foreach(var temp in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(p => temp.customerid)</td>
+                    <td>@Html.DisplayFor(p => temp.customername)</td>
+                    <td>@Html.DisplayFor(p => temp.billid)</td>
+                    <td>@Html.DisplayFor(p => temp.billdate)</td>
+
+                    <td>@Html.DisplayFor(p => temp.billamount)</td>
+                    <td>@Html.DisplayFor(p => temp.paymentdate)</td>
+                    <td>@Html.DisplayFor(p => temp.paymenetamount)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

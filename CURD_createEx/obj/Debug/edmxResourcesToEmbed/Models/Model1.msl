@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="prachiModelStoreContainer" CdmEntityContainer="prachiEntities">
+    <EntitySetMapping Name="customertbls">
+      <EntityTypeMapping TypeName="prachiModel.customertbl">
+        <MappingFragment StoreEntitySet="customertbl">
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="customername" ColumnName="customername" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="emptbls">
+      <EntityTypeMapping TypeName="prachiModel.emptbl">
+        <MappingFragment StoreEntitySet="emptbl">
+          <ScalarProperty Name="empid" ColumnName="empid" />
+          <ScalarProperty Name="empname" ColumnName="empname" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="mono" ColumnName="mono" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="dept" ColumnName="dept" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="depttbls">
+      <EntityTypeMapping TypeName="prachiModel.depttbl">
+        <MappingFragment StoreEntitySet="depttbl">
+          <ScalarProperty Name="deptname" ColumnName="deptname" />
+          <ScalarProperty Name="deptid" ColumnName="deptid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

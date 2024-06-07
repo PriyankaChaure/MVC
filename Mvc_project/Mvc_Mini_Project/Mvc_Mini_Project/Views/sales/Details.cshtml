@@ -1,0 +1,109 @@
+﻿@model Mvc_Mini_Project.Models.sales
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/UserArea/Views/Shared/ProjectLayout.cshtml";
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Sales Details</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.SalesId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SalesId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.book.BookName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.book.BookName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.book.BookDescription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.book.BookDescription)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.book.author.AuthorName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.book.author.AuthorName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.book.subject.SubjectName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.book.subject.SubjectName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.customer.CustomerName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.customer.CustomerName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.customer.EmailId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.customer.EmailId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.customer.MobileNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.customer.MobileNo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SalesDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SalesDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.SalesId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

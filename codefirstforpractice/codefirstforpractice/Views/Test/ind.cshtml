@@ -1,0 +1,45 @@
+﻿@model IEnumerable<codefirstforpractice.Models.classofVM>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ind</title>
+</head>
+<body>
+    <div>
+        <h2>Players Information</h2>
+        <div>
+            <table border="1">
+                <tr>
+                    <td colspan="3">
+                        @using (Html.BeginForm("searchbycountry", "Test", FormMethod.Post))
+                        {
+                            @:Country Name:
+                            @Html.DropDownList("countryid", "Select country")
+                            <input type="submit" value="Search" />
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sr.No</td>
+                    <td>Team Name</td>
+                    <td>Total Score</td>
+                </tr>
+                @foreach (var temp in Model)
+                {
+                    <tr>
+                        <td>@temp.teamid</td>
+                        <td>@temp.teamname</td>
+                        <td>@temp.scoreplayer</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿@model Mvc_Mini_Project.Models.book
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Book Details</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.author.AuthorName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.author.AuthorName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.subject.SubjectName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.subject.SubjectName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BookName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BookName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BookDescription)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BookDescription)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.BookId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

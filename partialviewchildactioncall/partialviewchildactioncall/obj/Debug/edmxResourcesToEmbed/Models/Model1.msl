@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="prachiModelStoreContainer" CdmEntityContainer="prachiEntities">
+    <EntitySetMapping Name="customertbls">
+      <EntityTypeMapping TypeName="prachiModel.customertbl">
+        <MappingFragment StoreEntitySet="customertbl">
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="customername" ColumnName="customername" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+          <ScalarProperty Name="proid" ColumnName="proid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="depttbls">
+      <EntityTypeMapping TypeName="prachiModel.depttbl">
+        <MappingFragment StoreEntitySet="depttbl">
+          <ScalarProperty Name="deptid" ColumnName="deptid" />
+          <ScalarProperty Name="deptname" ColumnName="deptname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="emptbls">
+      <EntityTypeMapping TypeName="prachiModel.emptbl">
+        <MappingFragment StoreEntitySet="emptbl">
+          <ScalarProperty Name="empid" ColumnName="empid" />
+          <ScalarProperty Name="empname" ColumnName="empname" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="mono" ColumnName="mono" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="dept" ColumnName="dept" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="prachiModel.student">
+        <MappingFragment StoreEntitySet="student">
+          <ScalarProperty Name="studentid" ColumnName="studentid" />
+          <ScalarProperty Name="studentname" ColumnName="studentname" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="phoneno" ColumnName="phoneno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

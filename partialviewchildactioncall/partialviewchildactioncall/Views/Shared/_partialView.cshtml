@@ -1,0 +1,27 @@
+﻿@model IEnumerable<partialviewchildactioncall.Models.emptbl>
+    <h2>Employee List</h2>
+<div>
+    <table border="1">
+        <tr>
+            <td>@Html.DisplayNameFor(p=>p.empname)</td>
+            <td>@Html.DisplayNameFor(p=>p.address)</td>
+            <td>@Html.DisplayNameFor(p=>p.emailid)</td>
+            <td>@Html.DisplayNameFor(p=>p.mono)</td>
+            <td>@Html.DisplayNameFor(p=>p.salary)</td>
+            <td>@Html.DisplayNameFor(p=>p.depttbl.deptname)</td>
+        </tr>
+        @foreach(var temp in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(p => temp.empname)</td>
+                    <td>@Html.DisplayFor(p => temp.address)</td>
+                    <td>@Html.DisplayFor(p => temp.emailid)</td>
+                    <td>@Html.DisplayFor(p => temp.mono)</td>
+                    <td>@Html.DisplayFor(p => temp.salary)</td>
+                    <td>@Html.DisplayFor(p => temp.depttbl.deptname)</td>
+                </tr>
+            }
+    </table>
+</div>
+
+

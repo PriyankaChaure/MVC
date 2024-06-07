@@ -1,0 +1,39 @@
+﻿@model Antiforgery_Token.Models.product
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>create</title>
+</head>
+<body>
+    <h2>
+        Product Information
+    </h2>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <div>@Html.AntiForgeryToken()</div>
+            <div>
+                @Html.LabelFor(p => p.productname)
+                <div>@Html.EditorFor(p => p.productname)</div>
+            </div>
+            <div>
+                @Html.LabelFor(p => p.mfgname)
+                <div>@Html.EditorFor(p => p.mfgname)</div>
+            </div>
+            <div>
+                @Html.LabelFor(p => p.productdescription)
+                <div>@Html.EditorFor(p => p.productdescription)</div>
+            </div>
+            <div>
+                <input type="submit" value="save"/>
+            </div>
+        }
+    </div>
+</body>
+</html>

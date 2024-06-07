@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/UserArea/Views/Shared/_ProjectLayout.cshtml";
+}
+<h2>Welcome To Home</h2>
+<h2>
+    Welcome ! @Session["FirstName"]
+
+</h2>
+<h2>@Html.ActionLink("LogOut", "LogOut", "ManageUsers")</h2>
+
+

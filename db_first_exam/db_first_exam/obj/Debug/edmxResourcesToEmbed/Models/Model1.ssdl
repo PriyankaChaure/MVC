@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="prachiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="project">
+    <Key>
+      <PropertyRef Name="projectid" />
+    </Key>
+    <Property Name="projectid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="projectname" Type="varchar" MaxLength="20" />
+    <Property Name="projectdesc" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="projectassignment">
+    <Key>
+      <PropertyRef Name="assignmentid" />
+    </Key>
+    <Property Name="assignmentid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentid" Type="bigint" />
+    <Property Name="assignmentdate" Type="datetime" />
+    <Property Name="projectid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="studentid" />
+    </Key>
+    <Property Name="studentid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentname" Type="varchar" MaxLength="20" />
+    <Property Name="address" Type="varchar" MaxLength="40" />
+    <Property Name="emailid" Type="varchar" MaxLength="20" />
+    <Property Name="phoneno" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__projectas__proje__3864608B">
+    <End Role="project" Type="Self.project" Multiplicity="0..1" />
+    <End Role="projectassignment" Type="Self.projectassignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="projectid" />
+      </Principal>
+      <Dependent Role="projectassignment">
+        <PropertyRef Name="projectid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__projectas__stude__37703C52">
+    <End Role="student" Type="Self.student" Multiplicity="0..1" />
+    <End Role="projectassignment" Type="Self.projectassignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="studentid" />
+      </Principal>
+      <Dependent Role="projectassignment">
+        <PropertyRef Name="studentid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="prachiModelStoreContainer">
+    <EntitySet Name="project" EntityType="Self.project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="projectassignment" EntityType="Self.projectassignment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__projectas__proje__3864608B" Association="Self.FK__projectas__proje__3864608B">
+      <End Role="project" EntitySet="project" />
+      <End Role="projectassignment" EntitySet="projectassignment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__projectas__stude__37703C52" Association="Self.FK__projectas__stude__37703C52">
+      <End Role="student" EntitySet="student" />
+      <End Role="projectassignment" EntitySet="projectassignment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

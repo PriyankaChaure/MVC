@@ -1,0 +1,68 @@
+﻿@model IEnumerable<curdPractice.Models.studenttbl>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>
+        Student Information
+    </h2>
+    <div> 
+        <div>@Html.ActionLink("create new","create","Test")</div>
+        <table border="1">
+            <tr >
+              <td colspan="3">
+                @using (Html.BeginForm("searchbyname", "Test", FormMethod.Post))
+                {@:StudentName:
+                    
+
+                        <input type="text" name="studentname" />
+                        <input type="submit" value="search" />
+                    
+                }
+            </td>
+              <td colspan="4">
+                  @using (Html.BeginForm("searchbydept", "Test", FormMethod.Post))
+                  {@:searchdept:
+                      @Html.DropDownList("studentdeptid", "selectdept")
+
+
+
+                      <input type="submit" value="search" />
+                  }
+              </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(p => p.studentid)</td>
+                <td>@Html.DisplayNameFor(p => p.studentname)</td>
+                <td>@Html.DisplayNameFor(p => p.address)</td>
+                <td>@Html.DisplayNameFor(p => p.emailid)</td>
+                <td>@Html.DisplayNameFor(p => p.marks)</td>
+                <td>@Html.DisplayNameFor(p => p.mobileno)</td>
+                <td>@Html.DisplayNameFor(p => p.studentdept.studentdeptname)</td>
+            </tr>
+            @foreach(var temp in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(p => temp.studentid)</td>
+                    <td>@Html.DisplayFor(p => temp.studentname)</td>
+                    <td>@Html.DisplayFor(p => temp.address)</td>
+                    <td>@Html.DisplayFor(p => temp.emailid)</td>
+                    <td>@Html.DisplayFor(p => temp.marks)</td>
+                    <td>@Html.DisplayFor(p => temp.mobileno)</td>
+                    <td>@Html.DisplayFor(p => temp.studentdept.studentdeptname)</td>
+                    <td>@Html.ActionLink("Edit", "edit", "Test", new { id = temp.studentid }, null)</td>
+                    <td>@Html.ActionLink("Delete", "delete", "Test", new { id = temp.studentid }, null)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

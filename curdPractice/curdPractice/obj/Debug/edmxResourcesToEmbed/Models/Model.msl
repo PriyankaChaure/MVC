@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="prachiModelStoreContainer" CdmEntityContainer="prachiEntities">
+    <EntitySetMapping Name="studentdepts">
+      <EntityTypeMapping TypeName="prachiModel.studentdept">
+        <MappingFragment StoreEntitySet="studentdept">
+          <ScalarProperty Name="studentdeptid" ColumnName="studentdeptid" />
+          <ScalarProperty Name="studentdeptname" ColumnName="studentdeptname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="studenttbls">
+      <EntityTypeMapping TypeName="prachiModel.studenttbl">
+        <MappingFragment StoreEntitySet="studenttbl">
+          <ScalarProperty Name="studentdeptid" ColumnName="studentdeptid" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="marks" ColumnName="marks" />
+          <ScalarProperty Name="studentid" ColumnName="studentid" />
+          <ScalarProperty Name="studentname" ColumnName="studentname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

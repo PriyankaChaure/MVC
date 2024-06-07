@@ -1,0 +1,35 @@
+﻿@model Mvc_Mini_Project.Models.author
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/UserArea/Views/Shared/ProjectLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Author Deatils</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AuthorName)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.AuthorId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<partialviewchildactioncall.Models.depttbl>
+    <h2>All Department</h2>
+<div>
+    <table border="1">
+        <tr>
+            <td>@Html.DisplayNameFor(p => p.deptid)</td>
+            <td>@Html.DisplayNameFor(p => p.deptname)</td>
+        </tr>
+        @foreach(var temp in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(p => temp.deptid)</td>
+                    <td>@Html.DisplayFor(p => temp.deptname)</td>
+                </tr>
+            }
+    </table>
+</div>

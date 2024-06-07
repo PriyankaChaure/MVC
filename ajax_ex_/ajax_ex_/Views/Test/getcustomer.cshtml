@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>getcustomer</title>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#b1").click(function () {
+                $.get("/test/getcustomer", function (data, status) {
+                    alert(status);
+                    alert(Json.Stringify(data));
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div> 
+    </div>
+    <input tupe="button" value="show" id="b1"/>
+</body>
+</html>

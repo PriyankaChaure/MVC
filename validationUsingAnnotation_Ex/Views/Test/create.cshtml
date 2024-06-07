@@ -1,0 +1,73 @@
+﻿@model validationUsingAnnotation_Ex.Models.emptbl
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <title>create</title>
+</head>
+<body>
+    <h2>
+        Create New Employee Information
+    </h2>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <div>@Html.ValidationSummary(false)</div>
+           
+            <div>
+                @Html.LabelFor(p => p.empname)
+                <div>
+                    @Html.EditorFor(p => p.empname)
+                    @Html.ValidationMessageFor(p => p.empname)
+                </div>
+            </div>
+            <div>
+                @Html.LabelFor(p => p.address)
+                <div>
+                    @Html.EditorFor(p => p.address)
+                    @Html.ValidationMessageFor(p => p.address)
+                </div>
+            </div>
+            <div>
+                @Html.LabelFor(p => p.mono)
+                <div>
+                    @Html.EditorFor(p => p.mono)
+                    @Html.ValidationMessageFor(p => p.mono)
+                </div>
+            </div>
+            <div>
+                @Html.LabelFor(p => p.salary)
+                <div>
+                    @Html.EditorFor(p => p.salary)
+                    @Html.ValidationMessageFor(p => p.salary)
+                </div>
+            </div>
+            <div>
+                @Html.LabelFor(p => p.emailid)
+                <div>
+                    @Html.EditorFor(p => p.emailid)
+                    @Html.ValidationMessageFor(p => p.emailid)
+                </div>
+            </div>
+            <div>
+                @Html.LabelFor(p => p.dept)
+                <div>
+                    @Html.EditorFor(p => p.dept)
+                    @Html.ValidationMessageFor(p => p.dept)
+                </div>
+            </div>
+            <div>
+                <input type="submit" value="update" />
+            </div>
+        }
+    </div>
+</body>
+</html>

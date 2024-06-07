@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="prachiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="atable">
+          <Key>
+            <PropertyRef Name="aid" />
+          </Key>
+          <Property Name="aid" Type="bigint" Nullable="false" />
+          <Property Name="avalue" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="BillTbl">
+          <Key>
+            <PropertyRef Name="billid" />
+          </Key>
+          <Property Name="billid" Type="bigint" Nullable="false" />
+          <Property Name="billdate" Type="datetime" />
+          <Property Name="billamount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="customerid" Type="bigint" />
+        </EntityType>
+        <EntityType Name="btable">
+          <Key>
+            <PropertyRef Name="bid" />
+          </Key>
+          <Property Name="bid" Type="bigint" Nullable="false" />
+          <Property Name="bvalue" Type="varchar" MaxLength="20" />
+          <Property Name="aid" Type="bigint" />
+        </EntityType>
+        <EntityType Name="customertbl">
+          <Key>
+            <PropertyRef Name="customerid" />
+          </Key>
+          <Property Name="customerid" Type="bigint" Nullable="false" />
+          <Property Name="customername" Type="varchar" MaxLength="100" />
+          <Property Name="address" Type="varchar(max)" />
+          <Property Name="emailid" Type="varchar" MaxLength="40" />
+          <Property Name="mobileno" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="paymenttbl">
+          <Key>
+            <PropertyRef Name="paymentid" />
+          </Key>
+          <Property Name="paymentid" Type="bigint" Nullable="false" />
+          <Property Name="paymentdate" Type="datetime" />
+          <Property Name="paymenetamount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="billid" Type="bigint" />
+        </EntityType>
+        <Association Name="FK__BillTbl__custome__36B12243">
+          <End Role="customertbl" Type="Self.customertbl" Multiplicity="0..1" />
+          <End Role="BillTbl" Type="Self.BillTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customertbl">
+              <PropertyRef Name="customerid" />
+            </Principal>
+            <Dependent Role="BillTbl">
+              <PropertyRef Name="customerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__paymenttb__billi__5CD6CB2B">
+          <End Role="BillTbl" Type="Self.BillTbl" Multiplicity="0..1" />
+          <End Role="paymenttbl" Type="Self.paymenttbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BillTbl">
+              <PropertyRef Name="billid" />
+            </Principal>
+            <Dependent Role="paymenttbl">
+              <PropertyRef Name="billid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="prachiModelStoreContainer">
+          <EntitySet Name="atable" EntityType="Self.atable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BillTbl" EntityType="Self.BillTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="btable" EntityType="Self.btable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customertbl" EntityType="Self.customertbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="paymenttbl" EntityType="Self.paymenttbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BillTbl__custome__36B12243" Association="Self.FK__BillTbl__custome__36B12243">
+            <End Role="customertbl" EntitySet="customertbl" />
+            <End Role="BillTbl" EntitySet="BillTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__paymenttb__billi__5CD6CB2B" Association="Self.FK__paymenttb__billi__5CD6CB2B">
+            <End Role="BillTbl" EntitySet="BillTbl" />
+            <End Role="paymenttbl" EntitySet="paymenttbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="prachiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BillTbl">
+          <Key>
+            <PropertyRef Name="billid" />
+          </Key>
+          <Property Name="billid" Type="Int64" Nullable="false" />
+          <Property Name="billdate" Type="DateTime" Precision="3" />
+          <Property Name="billamount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="customerid" Type="Int64" />
+          <NavigationProperty Name="customertbl" Relationship="Self.FK__BillTbl__custome__36B12243" FromRole="BillTbl" ToRole="customertbl" />
+          <NavigationProperty Name="paymenttbls" Relationship="Self.FK__paymenttb__billi__5CD6CB2B" FromRole="BillTbl" ToRole="paymenttbl" />
+        </EntityType>
+        <EntityType Name="customertbl">
+          <Key>
+            <PropertyRef Name="customerid" />
+          </Key>
+          <Property Name="customerid" Type="Int64" Nullable="false" />
+          <Property Name="customername" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="emailid" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="mobileno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BillTbls" Relationship="Self.FK__BillTbl__custome__36B12243" FromRole="customertbl" ToRole="BillTbl" />
+        </EntityType>
+        <EntityType Name="paymenttbl">
+          <Key>
+            <PropertyRef Name="paymentid" />
+          </Key>
+          <Property Name="paymentid" Type="Int64" Nullable="false" />
+          <Property Name="paymentdate" Type="DateTime" Precision="3" />
+          <Property Name="paymenetamount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="billid" Type="Int64" />
+          <NavigationProperty Name="BillTbl" Relationship="Self.FK__paymenttb__billi__5CD6CB2B" FromRole="paymenttbl" ToRole="BillTbl" />
+        </EntityType>
+        <Association Name="FK__BillTbl__custome__36B12243">
+          <End Role="customertbl" Type="Self.customertbl" Multiplicity="0..1" />
+          <End Role="BillTbl" Type="Self.BillTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customertbl">
+              <PropertyRef Name="customerid" />
+            </Principal>
+            <Dependent Role="BillTbl">
+              <PropertyRef Name="customerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__paymenttb__billi__5CD6CB2B">
+          <End Role="BillTbl" Type="Self.BillTbl" Multiplicity="0..1" />
+          <End Role="paymenttbl" Type="Self.paymenttbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BillTbl">
+              <PropertyRef Name="billid" />
+            </Principal>
+            <Dependent Role="paymenttbl">
+              <PropertyRef Name="billid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="prachiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BillTbls" EntityType="Self.BillTbl" />
+          <EntitySet Name="customertbls" EntityType="Self.customertbl" />
+          <EntitySet Name="paymenttbls" EntityType="Self.paymenttbl" />
+          <AssociationSet Name="FK__BillTbl__custome__36B12243" Association="Self.FK__BillTbl__custome__36B12243">
+            <End Role="customertbl" EntitySet="customertbls" />
+            <End Role="BillTbl" EntitySet="BillTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__paymenttb__billi__5CD6CB2B" Association="Self.FK__paymenttb__billi__5CD6CB2B">
+            <End Role="BillTbl" EntitySet="BillTbls" />
+            <End Role="paymenttbl" EntitySet="paymenttbls" />
+          </AssociationSet>
+          <EntitySet Name="atables" EntityType="prachiModel.atable" />
+          <EntitySet Name="btables" EntityType="prachiModel.btable" />
+        </EntityContainer>
+        <EntityType Name="atable">
+          <Key>
+            <PropertyRef Name="aid" />
+          </Key>
+          <Property Name="aid" Type="Int64" Nullable="false" />
+          <Property Name="avalue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="btable">
+          <Key>
+            <PropertyRef Name="bid" />
+          </Key>
+          <Property Name="bid" Type="Int64" Nullable="false" />
+          <Property Name="bvalue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="aid" Type="Int64" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="prachiModelStoreContainer" CdmEntityContainer="prachiEntities">
+          <EntitySetMapping Name="BillTbls">
+            <EntityTypeMapping TypeName="prachiModel.BillTbl">
+              <MappingFragment StoreEntitySet="BillTbl">
+                <ScalarProperty Name="billid" ColumnName="billid" />
+                <ScalarProperty Name="billdate" ColumnName="billdate" />
+                <ScalarProperty Name="billamount" ColumnName="billamount" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customertbls">
+            <EntityTypeMapping TypeName="prachiModel.customertbl">
+              <MappingFragment StoreEntitySet="customertbl">
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+                <ScalarProperty Name="customername" ColumnName="customername" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paymenttbls">
+            <EntityTypeMapping TypeName="prachiModel.paymenttbl">
+              <MappingFragment StoreEntitySet="paymenttbl">
+                <ScalarProperty Name="paymentid" ColumnName="paymentid" />
+                <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+                <ScalarProperty Name="paymenetamount" ColumnName="paymenetamount" />
+                <ScalarProperty Name="billid" ColumnName="billid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="atables">
+            <EntityTypeMapping TypeName="prachiModel.atable">
+              <MappingFragment StoreEntitySet="atable">
+                <ScalarProperty Name="avalue" ColumnName="avalue" />
+                <ScalarProperty Name="aid" ColumnName="aid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="btables">
+            <EntityTypeMapping TypeName="prachiModel.btable">
+              <MappingFragment StoreEntitySet="btable">
+                <ScalarProperty Name="aid" ColumnName="aid" />
+                <ScalarProperty Name="bvalue" ColumnName="bvalue" />
+                <ScalarProperty Name="bid" ColumnName="bid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

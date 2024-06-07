@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="prachiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customertbl">
+          <Key>
+            <PropertyRef Name="customerid" />
+          </Key>
+          <Property Name="customerid" Type="bigint" Nullable="false" />
+          <Property Name="customername" Type="varchar" MaxLength="100" />
+          <Property Name="address" Type="varchar(max)" />
+          <Property Name="emailid" Type="varchar" MaxLength="40" />
+          <Property Name="mobileno" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="depttbl">
+          <Key>
+            <PropertyRef Name="deptid" />
+          </Key>
+          <Property Name="deptid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="deptname" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="emptbl">
+          <Key>
+            <PropertyRef Name="empid" />
+          </Key>
+          <Property Name="empid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empname" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="address" Type="varchar(max)" />
+          <Property Name="emailid" Type="varchar" MaxLength="40" />
+          <Property Name="mono" Type="varchar" MaxLength="20" />
+          <Property Name="salary" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dept" Type="bigint" />
+        </EntityType>
+        <Association Name="FK__emptbl__dept__164452B1">
+          <End Role="depttbl" Type="Self.depttbl" Multiplicity="0..1" />
+          <End Role="emptbl" Type="Self.emptbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="depttbl">
+              <PropertyRef Name="deptid" />
+            </Principal>
+            <Dependent Role="emptbl">
+              <PropertyRef Name="dept" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="prachiModelStoreContainer">
+          <EntitySet Name="customertbl" EntityType="Self.customertbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="depttbl" EntityType="Self.depttbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="emptbl" EntityType="Self.emptbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__emptbl__dept__164452B1" Association="Self.FK__emptbl__dept__164452B1">
+            <End Role="depttbl" EntitySet="depttbl" />
+            <End Role="emptbl" EntitySet="emptbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="prachiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="customertbl">
+          <Key>
+            <PropertyRef Name="customerid" />
+          </Key>
+          <Property Name="customerid" Type="Int64" Nullable="false" />
+          <Property Name="customername" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="emailid" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="mobileno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="emptbl">
+          <Key>
+            <PropertyRef Name="empid" />
+          </Key>
+          <Property Name="empid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="emailid" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="mono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="dept" Type="Int64" />
+          <NavigationProperty Name="depttbl" Relationship="prachiModel.FK__emptbl__dept__164452B1" FromRole="emptbl" ToRole="depttbl" />
+        </EntityType>
+        <EntityContainer Name="prachiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="customertbls" EntityType="Self.customertbl" />
+          <EntitySet Name="emptbls" EntityType="Self.emptbl" />
+          <EntitySet Name="depttbls" EntityType="prachiModel.depttbl" />
+          <AssociationSet Name="FK__emptbl__dept__164452B1" Association="prachiModel.FK__emptbl__dept__164452B1">
+            <End Role="depttbl" EntitySet="depttbls" />
+            <End Role="emptbl" EntitySet="emptbls" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="depttbl">
+          <Key>
+            <PropertyRef Name="deptid" />
+          </Key>
+          <Property Name="deptid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deptname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="emptbls" Relationship="prachiModel.FK__emptbl__dept__164452B1" FromRole="depttbl" ToRole="emptbl" />
+        </EntityType>
+        <Association Name="FK__emptbl__dept__164452B1">
+          <End Type="prachiModel.depttbl" Role="depttbl" Multiplicity="0..1" />
+          <End Type="prachiModel.emptbl" Role="emptbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="depttbl">
+              <PropertyRef Name="deptid" />
+            </Principal>
+            <Dependent Role="emptbl">
+              <PropertyRef Name="dept" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="prachiModelStoreContainer" CdmEntityContainer="prachiEntities">
+          <EntitySetMapping Name="customertbls">
+            <EntityTypeMapping TypeName="prachiModel.customertbl">
+              <MappingFragment StoreEntitySet="customertbl">
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+                <ScalarProperty Name="customername" ColumnName="customername" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emptbls">
+            <EntityTypeMapping TypeName="prachiModel.emptbl">
+              <MappingFragment StoreEntitySet="emptbl">
+                <ScalarProperty Name="empid" ColumnName="empid" />
+                <ScalarProperty Name="empname" ColumnName="empname" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="mono" ColumnName="mono" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="dept" ColumnName="dept" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="depttbls">
+            <EntityTypeMapping TypeName="prachiModel.depttbl">
+              <MappingFragment StoreEntitySet="depttbl">
+                <ScalarProperty Name="deptname" ColumnName="deptname" />
+                <ScalarProperty Name="deptid" ColumnName="deptid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

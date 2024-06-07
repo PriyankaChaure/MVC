@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "standardhtml";
+}
+
+<h2>standardhtml</h2>
+<div>
+    @{ 
+        List<SelectListItem> lst = new List<SelectListItem>();
+        lst.Add(new SelectListItem() {Text= "pune",Value= "1" });
+        lst.Add(new SelectListItem() { Text = "mumbai", Value = "2" });
+        lst.Add(new SelectListItem() { Text = "noida", Value = "3" });
+        lst.Add(new SelectListItem() { Text = "delhi", Value = "4" });
+        lst.Add(new SelectListItem() { Text = "chennai", Value = "5" });
+    }
+
+
+    Enter Name:@Html.TextBox("ename", "priya")<br />
+    @**Address:@Html.TextArea("Add", "pune", 5, 10, null)<br />*@
+    Address:@Html.TextArea("Add", "pune", 5, 10, new { size = 50, style = "background-color:yellow;color:red" })<br />
+    Password:@Html.Password("priya", "str")<br />
+    Hidden:@Html.Hidden("pr", "priyanka@gmail.com")<br />
+    Radio Button:@Html.RadioButton("rd", 1) Reading
+                 @Html.RadioButton("rd", 2) travelling
+                 @Html.RadioButton("rd", 3) movies<br />
+    Check Box:@Html.CheckBox("abc")c#
+              @Html.CheckBox("pqr")vb#
+              @Html.CheckBox("str")F#
+              @Html.CheckBox("mno")c++<br/>
+    select city:@Html.DropDownList("ct",lst)<br/>
+    JS Frameword:@Html.DropDownList("js",new SelectList(new string[] {"ab","bc","cd","de","ef"}),"select js")<br/>
+    Select City Using ListBox:@Html.ListBox("ct",lst)<br/>
+    select DB using LixstBox:@Html.ListBox("db",new MultiSelectList(new string[] {"priya","neha","swari","teju","kittu"}),"select name")<br/>
+    Action Link:@Html.ActionLink("go to index","index","home")
+</div>
+

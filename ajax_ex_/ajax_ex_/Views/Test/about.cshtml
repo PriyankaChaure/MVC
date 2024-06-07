@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>about</title>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#b1").click(function () {
+                $.ajax({
+                    url:"@Url.Action("getcustomer","test")",
+                   // url: "/test/getcustomer",
+                    type: "get",
+                    contentType: "application/json",
+                    success: function (result)
+                    {
+                        var str = "";
+                        for (var i = 0; i < result.length; i++)
+                        {
+                            str = "<tr><td>" + result[i].customerid + "</td>";
+                            str += "<td>" + result[i].customername + "</td>";
+                            str += "<td>" + result[i].address + "</td>";
+                            str += "<td>" + result[i].emailid + "</td>";
+                            str += "<td>" + result[i].mobileno + "</td></tr>";
+                           
+                            $("#tb").append(str);
+                        }
+                                alert(Json.Stringify(result));
+                    },
+                    error: function (err)
+                            {
+                                alert(Json.Stringify(result));
+                            }
+                    
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+    <div> 
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>customerid</th>
+                    <th>customername</th>
+                    <th>address</th>
+                    <th>emailid</th>
+                    <th>mobileno</th>
+                    
+                </tr>
+            </thead>
+            <tbody id="tb">
+
+            </tbody>
+        </table>
+    </div>
+    <input type="button" value="makecall" id="b1"/>
+</body>
+</html>

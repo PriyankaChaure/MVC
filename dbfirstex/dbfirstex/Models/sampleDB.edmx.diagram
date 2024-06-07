@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="86f42391c3484a5a9d431d59989c41c4" Name="Diagram1">
+        <EntityTypeShape EntityType="prachiModel.customertbl" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="prachiModel.depttbl" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="prachiModel.emptbl" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="prachiModel.FK__emptbl__dept__164452B1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="prachiModel.paymenttbl" Width="1.5" PointX="3.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

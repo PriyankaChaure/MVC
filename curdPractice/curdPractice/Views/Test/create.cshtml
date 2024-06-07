@@ -1,0 +1,54 @@
+﻿@model curdPractice.Models.studenttbl 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>create</title>
+</head>
+<body>
+    <div>
+        <h2>Create Student Information</h2>
+        @using (Html.BeginForm())
+        {
+            <div>
+                @Html.LabelFor(p => p.studentname)
+                <div>@Html.EditorFor(p => p.studentname)</div>
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.marks)
+                <div>@Html.EditorFor(p => p.marks)</div>
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.address)
+                <div>@Html.EditorFor(p => p.address)</div>
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.emailid)
+                <div>@Html.EditorFor(p => p.emailid)</div>
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.mobileno)
+                <div>@Html.EditorFor(p => p.mobileno)</div>
+            </div>
+            
+            <div>
+                @Html.LabelFor(p=>p.studentdept.studentdeptname)
+                <div>@Html.DropDownList("studentdeptid","select dept")</div>
+            </div>
+
+            <div>
+                <input type="submit" value="save"/>
+            </div>
+        }
+    </div>
+</body>
+</html>

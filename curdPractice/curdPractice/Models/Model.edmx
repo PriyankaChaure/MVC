@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="prachiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="studentdept">
+          <Key>
+            <PropertyRef Name="studentdeptid" />
+          </Key>
+          <Property Name="studentdeptid" Type="bigint" Nullable="false" />
+          <Property Name="studentdeptname" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="studenttbl">
+          <Key>
+            <PropertyRef Name="studentid" />
+          </Key>
+          <Property Name="studentname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="studentid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="marks" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="mobileno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="emailid" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="studentdeptid" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__studenttb__stude__0B91BA14">
+          <End Role="studentdept" Type="Self.studentdept" Multiplicity="1" />
+          <End Role="studenttbl" Type="Self.studenttbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="studentdept">
+              <PropertyRef Name="studentdeptid" />
+            </Principal>
+            <Dependent Role="studenttbl">
+              <PropertyRef Name="studentdeptid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="prachiModelStoreContainer">
+          <EntitySet Name="studentdept" EntityType="Self.studentdept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="studenttbl" EntityType="Self.studenttbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__studenttb__stude__0B91BA14" Association="Self.FK__studenttb__stude__0B91BA14">
+            <End Role="studentdept" EntitySet="studentdept" />
+            <End Role="studenttbl" EntitySet="studenttbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="prachiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="studentdept">
+          <Key>
+            <PropertyRef Name="studentdeptid" />
+          </Key>
+          <Property Name="studentdeptid" Type="Int64" Nullable="false" />
+          <Property Name="studentdeptname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="studenttbls" Relationship="prachiModel.FK__studenttb__stude__0B91BA14" FromRole="studentdept" ToRole="studenttbl" />
+        </EntityType>
+        <EntityContainer Name="prachiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="studentdepts" EntityType="Self.studentdept" />
+          <EntitySet Name="studenttbls" EntityType="prachiModel.studenttbl" />
+          <AssociationSet Name="FK__studenttb__stude__0B91BA14" Association="prachiModel.FK__studenttb__stude__0B91BA14">
+            <End Role="studentdept" EntitySet="studentdepts" />
+            <End Role="studenttbl" EntitySet="studenttbls" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="studenttbl">
+          <Key>
+            <PropertyRef Name="studentid" />
+          </Key>
+          <Property Name="studentname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="studentid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="marks" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="mobileno" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="emailid" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="studentdeptid" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="studentdept" Relationship="prachiModel.FK__studenttb__stude__0B91BA14" FromRole="studenttbl" ToRole="studentdept" />
+        </EntityType>
+        <Association Name="FK__studenttb__stude__0B91BA14">
+          <End Type="prachiModel.studentdept" Role="studentdept" Multiplicity="1" />
+          <End Type="prachiModel.studenttbl" Role="studenttbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="studentdept">
+              <PropertyRef Name="studentdeptid" />
+            </Principal>
+            <Dependent Role="studenttbl">
+              <PropertyRef Name="studentdeptid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="prachiModelStoreContainer" CdmEntityContainer="prachiEntities">
+          <EntitySetMapping Name="studentdepts">
+            <EntityTypeMapping TypeName="prachiModel.studentdept">
+              <MappingFragment StoreEntitySet="studentdept">
+                <ScalarProperty Name="studentdeptid" ColumnName="studentdeptid" />
+                <ScalarProperty Name="studentdeptname" ColumnName="studentdeptname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="studenttbls">
+            <EntityTypeMapping TypeName="prachiModel.studenttbl">
+              <MappingFragment StoreEntitySet="studenttbl">
+                <ScalarProperty Name="studentdeptid" ColumnName="studentdeptid" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="marks" ColumnName="marks" />
+                <ScalarProperty Name="studentid" ColumnName="studentid" />
+                <ScalarProperty Name="studentname" ColumnName="studentname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

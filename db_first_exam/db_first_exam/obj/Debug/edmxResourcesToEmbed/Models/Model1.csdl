@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="prachiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="project">
+    <Key>
+      <PropertyRef Name="projectid" />
+    </Key>
+    <Property Name="projectid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="projectname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="projectdesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="projectassignments" Relationship="Self.FK__projectas__proje__3864608B" FromRole="project" ToRole="projectassignment" />
+  </EntityType>
+  <EntityType Name="projectassignment">
+    <Key>
+      <PropertyRef Name="assignmentid" />
+    </Key>
+    <Property Name="assignmentid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studentid" Type="Int64" />
+    <Property Name="assignmentdate" Type="DateTime" Precision="3" />
+    <Property Name="projectid" Type="Int64" />
+    <NavigationProperty Name="project" Relationship="Self.FK__projectas__proje__3864608B" FromRole="projectassignment" ToRole="project" />
+    <NavigationProperty Name="student" Relationship="Self.FK__projectas__stude__37703C52" FromRole="projectassignment" ToRole="student" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="studentid" />
+    </Key>
+    <Property Name="studentid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studentname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="emailid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="phoneno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="projectassignments" Relationship="Self.FK__projectas__stude__37703C52" FromRole="student" ToRole="projectassignment" />
+  </EntityType>
+  <Association Name="FK__projectas__proje__3864608B">
+    <End Role="project" Type="Self.project" Multiplicity="0..1" />
+    <End Role="projectassignment" Type="Self.projectassignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="projectid" />
+      </Principal>
+      <Dependent Role="projectassignment">
+        <PropertyRef Name="projectid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__projectas__stude__37703C52">
+    <End Role="student" Type="Self.student" Multiplicity="0..1" />
+    <End Role="projectassignment" Type="Self.projectassignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="studentid" />
+      </Principal>
+      <Dependent Role="projectassignment">
+        <PropertyRef Name="studentid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="prachiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="projects" EntityType="Self.project" />
+    <EntitySet Name="projectassignments" EntityType="Self.projectassignment" />
+    <EntitySet Name="students" EntityType="Self.student" />
+    <AssociationSet Name="FK__projectas__proje__3864608B" Association="Self.FK__projectas__proje__3864608B">
+      <End Role="project" EntitySet="projects" />
+      <End Role="projectassignment" EntitySet="projectassignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__projectas__stude__37703C52" Association="Self.FK__projectas__stude__37703C52">
+      <End Role="student" EntitySet="students" />
+      <End Role="projectassignment" EntitySet="projectassignments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

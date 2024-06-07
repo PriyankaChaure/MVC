@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div>
+    @helper generateList(string[] items)
+    {
+      <ul>
+          @foreach(var temp in items)
+           {
+        <li>@temp</li>
+           }
+     </ul>
+    }
+    <h2>Programming List</h2>
+    @generateList(new string[] { "c#", "java", "html", "css","vb#","f#" });
+
+    <h2>database List</h2>
+    @generateList(new string[] { "mysql", "sybase", "db2" });
+</div>>
+
